@@ -28,8 +28,13 @@ authenticator = stauth.Authenticate(
     cookie_expiry_days=1
 )
 
-name, authentication_status, username = authenticator.login("Login", location="main")
+# ✅ Fixed login call
+name, authentication_status, username = authenticator.login(
+    form_name="Login",
+    location="main"
+)
 
+# ------------------- LOGIN FLOW -------------------
 if authentication_status is False:
     st.error("❌ Incorrect username or password.")
 
